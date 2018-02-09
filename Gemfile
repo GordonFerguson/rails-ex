@@ -73,6 +73,6 @@ gem 'haml-rails'
 # for pagination
 gem 'kaminari'
 
-# datagrid for enhnaced tables (it needs kaminari [above] for paging)
+# datagrid for enhanaced tables (it needs kaminari [above] for paging)
 # https://github.com/bogdan/datagrid
 gem "datagrid"
