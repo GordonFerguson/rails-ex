@@ -38,7 +38,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'listen', '>= 3.0.5', '< 3.2'
-
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -57,3 +57,22 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# #############################
+# gjf tweaks that prcIs40 need
+# ##############################
+gem "acts_as_list"
+
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+
+#use haml see http://haml.info/
+gem 'haml'
+gem 'haml-rails'
+
+# for pagination
+gem 'kaminari'
+
+# datagrid for enhnaced tables (it needs kaminari [above] for paging)
+# https://github.com/bogdan/datagrid
+gem "datagrid"
