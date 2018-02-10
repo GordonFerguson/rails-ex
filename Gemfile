@@ -70,6 +70,10 @@ gem 'jquery-ui-rails'
 gem 'haml'
 gem 'haml-rails'
 
+# for backwards compat: (there are a couple of lingering .slim files)
+# see https://github.com/slim-template/slim-rails#readme
+gem 'slim-rails'
+
 # for pagination
 gem 'kaminari'
 
