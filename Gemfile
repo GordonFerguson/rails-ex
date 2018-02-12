@@ -9,7 +9,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
 # Support postgresql as a database for Active Record
-gem 'pg'
+gem 'pg', '~> 0.21'
 # Support sqlite3 as a database for Active Record
 gem 'sqlite3'
 # Support redis as a key-value store for Action Cable
@@ -40,6 +40,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'listen', '>= 3.0.5', '< 3.2'
 # gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 group :development, :test do
+  gem 'wdm', '>= 0.1.0' if Gem.win_platform?
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver

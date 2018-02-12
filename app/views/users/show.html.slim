@@ -1,0 +1,30 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @user.name
+p
+  strong String:
+  = @user.string
+p
+  strong Hashed password:
+  = @user.hashed_password
+p
+  strong String:
+  = @user.string
+p
+  strong Salt:
+  = @user.salt
+p
+  strong String:
+  = @user.string
+p
+  strong Email:
+  = @user.email
+p
+  strong String:
+  = @user.string
+
+=> link_to 'Edit', edit_user_path(@user)
+'|
+=< link_to 'Back', users_path
