@@ -67,13 +67,16 @@ gem "acts_as_list"
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
+
+# for backwards compat: (there are a couple of lingering .slim files)
+# But I don't want to generate any more slim files,
+# I want haml --- that's for consistency
+# see https://github.com/slim-template/slim-rails#readme
+# gem 'slim-rails'
+
 #use haml see http://haml.info/
 gem 'haml'
 gem 'haml-rails'
-
-# for backwards compat: (there are a couple of lingering .slim files)
-# see https://github.com/slim-template/slim-rails#readme
-gem 'slim-rails'
 
 # for pagination
 gem 'kaminari'
