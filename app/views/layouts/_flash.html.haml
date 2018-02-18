@@ -1,0 +1,14 @@
+-#/ Display and clear any flash entries (error, alert, notice)
+
+- if flash.detect {|k,v| ! v.nil?}
+  #flash
+    -if flash[:error]
+      #error
+        %span #{flash[:error]}
+    -if flash[:alert]
+      #alert
+        %span #{flash[:alert]}
+    -if flash[:notice]
+      #notice
+        %span #{flash[:notice]}
+  - [:error, :alert, :notice].each {|k|flash[k] = nil}

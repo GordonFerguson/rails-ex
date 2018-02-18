@@ -1,0 +1,25 @@
+
+%article.login
+  %section.intro
+    .message
+      This site is currently not available to the public. We are using it
+      to enter information into our database. There is no schedule yet for
+      making the information public. Please contact Professor Bobbi Owen through
+      = link_to('her UNC web page', 'http://www.unc.edu/~owenbob', {target: '_blank', class: 'quiet'})
+      for more information.
+  %section.form
+    = form_for(@user, :as => 'user', :url => '/prcis/prcis_authenticate_user_path') do |f|
+      #{f.hidden_field(:target_path,:value => request.original_fullpath)}
+      %table.login_layout
+        %tr
+          %td{align: "center", colspan: "2"} Login to 'PRC is Forty'
+        %tr
+          %td{align: "right"} #{f.label :login_id} Id:
+          %td #{f.text_field :name}
+        %tr
+          %td{align: "right"} #{f.label :password}:
+          %td #{f.password_field :password}
+        %tr
+          %td{align: "right"}
+            = f.submit "Log in"
+          %td &nbsp;

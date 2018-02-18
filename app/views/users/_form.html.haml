@@ -1,0 +1,28 @@
+= form_for @user do |f|
+  %h4 Probe : this is for admin's only -- it has not been tested
+  - if @user.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+      %ul
+        - @user.errors.full_messages.each do |message|
+          %li= message
+
+
+  .field
+    = f.label :name
+    = f.text_field :name
+
+  .field
+    = f.label :role
+    = f.text_field :role
+
+  .field
+    = f.label :password
+    = f.text_field :password
+
+  .field
+    = f.label :email
+    = f.text_field :email
+
+  .actions
+    = f.submit 'Save'

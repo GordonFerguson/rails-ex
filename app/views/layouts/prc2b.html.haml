@@ -1,0 +1,42 @@
+%head
+  %title #{@title ? @title : 'PRC at 40: People, Seasons, Productions'}
+  = stylesheet_link_tag    "application"
+  = javascript_include_tag "application"
+  = csrf_meta_tags
+%body{:class => Rails.env.development? ? 'dev' : 'prod'}
+  #psp-page
+    #psp-header
+      %h2
+        #{@title ? @title : "PRC at 40:: #{controller.action_name}"}
+      - if @current_user.present?
+        Current user  #{@current_user.name}
+        .actions
+          actions:
+          = link_to 'logout', '/prcis/logout'
+      - else
+        Not logged in
+      - unless false
+        #psp-menu-bar
+          %ul
+            %li#people-item
+              People
+          -#  %li#people-item
+          -#    = link_to 'People', '/psp/people'
+          -#    %input{type: 'text', size: '12'}
+          -#  %li#season-range
+          -#    %form{action: '/psp/seasons'}
+          -#      %input{type: 'submit', value: 'Seasons'}
+          -#      %input{type: 'text', name: 'from', size: '4'}
+          -#      thru:
+          -#      %input{type: 'text', name: 'thru', size: '4'}
+          -#      -#%a{ href:"/psp/index", class: "quiet"} Seasons
+          -#  %li#production-item
+          -#    %a{ href:"/psp/index", class: "quiet"} Production
+          -#    %input{type: 'text', size: '12'}
+          -#  %li
+          -#    = link_to 'Credits', '/psp/categories'
+
+    = render :partial => 'layouts/flash', :locals => {:flash => flash}
+    #psp-content
+      = yield
+    = render :partial => 'layouts/psp_footer'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180211235726) do
+ActiveRecord::Schema.define(version: 20180215172614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -129,12 +129,12 @@ ActiveRecord::Schema.define(version: 20180211235726) do
 
   create_table "users", id: :bigint, default: -> { "nextval('users_id_seq1'::regclass)" }, force: :cascade do |t|
     t.string "name"
-    t.string "string"
-    t.string "hashed_password"
+    t.string "role"
+    t.string "password"
     t.string "salt"
-    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email"
   end
 
   add_foreign_key "comments", "articles"
