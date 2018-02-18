@@ -1,9 +1,11 @@
+## Controller to manage sessions: login, logout etc
 class PrcisController < ApplicationController
   before_action :authenticate_user, :except => [ :index, :login, :lookup_user]
   # layout 'edit'
 
   # the 'welcome page'
   #-- if not logged in: offer login; otherwise no content
+  # todo is this the right place for this??
   def index
     if current_user.present?
       goto_role_home
@@ -14,7 +16,6 @@ class PrcisController < ApplicationController
   end
 
   # the login action: see above and
-  # I've configed devise to come here after a login failure too
   def login
     @user = User.new
     @user.login_id = params['id'] if params['id'] #todo why?
@@ -26,27 +27,33 @@ class PrcisController < ApplicationController
     goto_role_home # which is now the anonu home page
   end
 
-  # this is the action for the login form
+  # The action for the login form
   # find the user, confirm the password, add user id to the session
   # redirect to the appropriate page [or reshow the login page]
   def lookup_user
-    # fixme stub
     login_name = user_params['name']
     passwd = user_params['password']
-    if @user = User.with_password(login_name, passwd)
-      session[:user_id] = @user.id
-      flash[:alert] = 'Login okay'
-      # check for a existing target
-      if user_params['target_path'].present?
-        redirect_to user_params['target_path']
+    if passwd.present?
+      if @user = User.with_password(login_name, passwd)
+        session[:user_id] = @user.id
+        flash[:alert] = 'Login okay'
+        # check for a existing target
+        if user_params['target_path'].present?
+          redirect_to user_params['target_path']
+        else
+          goto_role_home
+        end
       else
-        goto_role_home
+        flash[:alert] = 'Login failed for '+login_name
+        @user = User.new
+        render :template => 'prcis/login'
       end
     else
-      flash[:alert] = 'Login failed for '+login_name
+      flash[:alert] = 'Password must be supplied for '+login_name
       @user = User.new
       render :template => 'prcis/login'
     end
+
   end
 
 private
