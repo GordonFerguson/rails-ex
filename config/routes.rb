@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  #NB welcome page is in prcis below
 
   # ========================================================
   # prc2b : test/debug pages: temporary
@@ -21,13 +22,13 @@ Rails.application.routes.draw do
   get '/prcis' => 'prcis#index'
   # ========================================================
 
+  # ========================================================
+  # user management - CRUD for admins, pwd change for users
   resources :users
-  resources :articles do
-    resources :comments
-  end
-
+  # ========================================================
 
   # ========================================================
   # admin : administrative pages
   get '/admin/index' => 'admin#index'
+  # ========================================================
 end
