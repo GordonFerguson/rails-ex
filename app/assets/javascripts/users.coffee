@@ -1,3 +1,5 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+# test code for assets to cca etc
+$ -> init_users_page()
+init_users_page = () ->
+  console.log('init_users_page called')
+
