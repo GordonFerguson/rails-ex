@@ -2,7 +2,6 @@ class Season < ActiveRecord::Base
   has_many :productions, -> { order(:opened_on) }
   has_many :credits, -> { order 'position' }, :as => :team
   belongs_to :season # dummy for poly join
-  include Compactness
 
 def staff
   credits
