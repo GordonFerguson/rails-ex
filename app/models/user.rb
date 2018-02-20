@@ -39,7 +39,7 @@ class User < ApplicationRecord
   # a user may access their role and 'lower' levels as wll
   def role_allowed?(required_role)
     if role_hierarchy.find_index(required_role.to_sym)
-      role_hierarchy.find_index(role.to_sym) >= role_hierarchy.find_index(required_role)
+      role_hierarchy.find_index(role.to_sym) >= role_hierarchy.find_index(required_role.to_sym)
     else
       false
     end

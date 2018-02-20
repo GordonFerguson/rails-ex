@@ -1,0 +1,72 @@
+-# title
+#editor-content.adminseason
+%h4 Available tools
+-#
+%ul
+  %li TODO link_to 'Management list'
+
+-#= link_to 'Management list', '/admin/summary'
+-#of all productions
+-#%li
+-#= link_to 'Search list', '/productions/browse'
+-#of all productions
+-#%li
+-#= link_to("Create a new user",:action => 'new_user')
+-#%li
+-#= link_to("View a list of people",'/people/list')
+-#%li
+-#TODO: download a csv (er tsv) list of productions
+-#=link_to("Download csv file",'/productions/csv')
+-#%li
+-#TODO: more/better access to people (by year; auto select, ???)
+-#%li
+-#TODO: a new 'dashboard'
+-#%hr
+-#
+-#%section#backup
+-##backup-list
+-#%h5 Recent on-line backups, click to download
+-#- @backup_npm.current_files.each do |name|
+-#.backup-file
+-##{link_to name, "/admin/dload/#{name}", :class => 'explicit'}
+-##backup-form
+-#%h5 To backup the database
+-#= button_to('Database Backup',{ action: "backup" }, method: :get )
+-#%hr
+-##credit_counts
+-#%h4 Counts
+-#Seasons #{Season.count}; Productions #{Production.count}; People  #{Person.count}; Credits #{Credit.count}
+-#= link_to('Manage Credits by Category', 'admin/categories')
+-#-#%ul
+-#-#  - Credit.category_summary.each do | category, count|
+-#-#    %li
+-#-#      #{category.blank?  ? 'unidentified' : category}: #{count}
+-#%hr
+-#%section#users
+-#%h3 Current users
+-#%table{border: '1'}
+-#%thead
+-#%td Login id
+-#%td Role
+-#%td E-mail
+-#-User.all.each do |user|
+-#%tr
+-#%td #{user.login_id}
+-#%td #{user.role}
+-#%td #{user.email}
+-#
+-#%section#db-review
+-#%h3 Consistency Checks
+-#= link_to 'Find', '/admin/compactness'
+-#any Season or Production with messy sort information
+-#%h3 Opening/closing dates
+-#= link_to 'Find', '/admin/opening_dates'
+-#missing opening dates and dates out of season.
+-#- unless @data_review.openings_report.nil? || @data_review.openings_report.empty?
+-#%ol
+-#- @data_review.openings_report.each do |report|
+-#%li #{report}
+-#
+-#%h3 Credit codes
+-#List any null or incosistent credit codes and categories. Assure the summary
+-#counts and the detail counts are the same

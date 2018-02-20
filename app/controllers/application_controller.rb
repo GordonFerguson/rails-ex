@@ -10,11 +10,13 @@ class ApplicationController < ActionController::Base
   # return true iff the user is logged in with access to the given role
   # otherwise send them to the login page
   def test_access(required_role)
+    puts 'testing'
     authenticate_user
-    if current_user.present?
+    if ! current_user.present?
+      puts 'no user'
       flash[:alert] = "You must be logged in access this pages."
       redirect_to home_page # aka the login page
-    elsif ! current_user.role_allowed? required_role
+    elsif current_user.role_allowed? required_role
       return true
     else
       flash[:alert] = "You do not have access to the #{required_role} pages."
@@ -23,8 +25,16 @@ class ApplicationController < ActionController::Base
   end
 
   # Look up the user in the session
+  # todo this is all way murky: how does a controller control
+  # the role
   def authenticate_user
-    current_user.present? and current_user.role_allowed?(required_role)
+    puts 'auth'
+    if ! current_user.present?
+      redirect_to '/prcis/login', notice: 'Login please'
+    elsif ! current_user.role_allowed?(required_role)
+      redirect_to '/prcis/login', notice: 'You are not authorized to see that page'
+    end
+
   end
 
   # nb these routes are just test scaffolding,
