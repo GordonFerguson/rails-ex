@@ -3,29 +3,28 @@
 %h4 Available tools
 -#
 %ul
-  %li TODO link_to 'Management list'
+  %li
+    = link_to 'Management list', '/admin/summary'
+    of all productions
+  %li
+    = link_to 'Search list', '/productions/browse'
+    of all productions
+  %li
+    = link_to("Manage Users", '/users')
+  %li
+    = link_to("View a list of people",'/people/list')
+  %li
+    TODO: download a csv (er tsv) list of productions
+    =link_to("Download csv file",'/productions/csv')
+  %li
+    TODO: more/better access to people (by year; auto select, ???)
+  %li
+    TODO: a new 'dashboard'
+%hr
 
--#= link_to 'Management list', '/admin/summary'
--#of all productions
--#%li
--#= link_to 'Search list', '/productions/browse'
--#of all productions
--#%li
--#= link_to("Create a new user",:action => 'new_user')
--#%li
--#= link_to("View a list of people",'/people/list')
--#%li
--#TODO: download a csv (er tsv) list of productions
--#=link_to("Download csv file",'/productions/csv')
--#%li
--#TODO: more/better access to people (by year; auto select, ???)
--#%li
--#TODO: a new 'dashboard'
--#%hr
--#
--#%section#backup
--##backup-list
--#%h5 Recent on-line backups, click to download
+%section#backup
+  #backup-list
+    %h5 Recent on-line backups, click to download
 -#- @backup_npm.current_files.each do |name|
 -#.backup-file
 -##{link_to name, "/admin/dload/#{name}", :class => 'explicit'}
